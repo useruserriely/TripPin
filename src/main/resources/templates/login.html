@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Mappin</title>
+    <link rel="stylesheet" href="/style_sign.css">
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <div class="logo">
+            <img src="logo.png" alt="Mappin Logo">
+        </div>
+        <h2>Sign In</h2>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="아이디를 입력해주세요" required>
+            <input type="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+            <button type="submit">로그인</button>
+        </form>
+        <div class="social-login">
+            <button class="google"><img src="google-icon.png" alt="Google"> Google</button>
+            <button class="naver"><img src="naver-icon.png" alt="Naver"> Naver</button>
+            <button class="kakao"><img src="kakao-icon.png" alt="Kakao"> Kakao</button>
+        </div>
+        <div class="help-links">
+            <a href="/find-username">아이디 찾기</a>
+            <a href="/find-password">비밀번호 찾기</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
