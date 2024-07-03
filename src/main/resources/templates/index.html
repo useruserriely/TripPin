@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelShare</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css?after">
+    </head>
 <body>
 <header>
     <div class="logo">
@@ -26,22 +26,13 @@
     <section class="search">
         <h1>어디로 여행을 떠나시나요?</h1>
         <div class="search-box">
-            <input type="text" placeholder="여행지를 검색하세요">
-            <button>검색</button>
+            <input type="text" id="searchInput" placeholder="여행지를 검색하세요">
+            <button id="searchBtn">검색</button>
         </div>
     </section>
 
     <section class="top-destinations">
         <h2>추천 여행지 Top3</h2>
-        <div class="destination-list">
-            <div class="destination"></div>
-            <div class="destination"></div>
-            <div class="destination"></div>
-        </div>
-    </section>
-
-    <section class="domestic-destinations">
-        <h2>국내 여행지</h2>
         <div class="destination-list">
             <div class="destination">
                 <img src="jeju.jpg" alt="Jeju">
@@ -55,9 +46,27 @@
                 <img src="seoul.jpg" alt="Seoul">
                 <p>Seoul</p>
             </div>
+        </div>
+    </section>
+
+    <section class="domestic-destinations">
+        <h2>국내 여행지</h2>
+        <div class="destination-list">
             <div class="destination">
                 <img src="gyeongju.jpg" alt="Gyeongju">
                 <p>Gyeongju</p>
+            </div>
+            <div class="destination">
+                <img src="jeju.jpg" alt="Jeju">
+                <p>Jeju</p>
+            </div>
+            <div class="destination">
+                <img src="busan.jpg" alt="Busan">
+                <p>Busan</p>
+            </div>
+            <div class="destination">
+                <img src="seoul.jpg" alt="Seoul">
+                <p>Seoul</p>
             </div>
         </div>
     </section>
@@ -66,5 +75,26 @@
 <footer>
     <p>&copy; 2024 TravelShare. All rights reserved.</p>
 </footer>
+
+<!-- 자바스크립트 추가 -->
+<script>
+    // 검색 버튼 클릭 시 입력된 여행지 검색
+    document.getElementById('searchBtn').addEventListener('click', function() {
+        var searchInput = document.getElementById('searchInput').value.toLowerCase();
+        var destinations = document.querySelectorAll('.destination p');
+
+        destinations.forEach(function(destination) {
+            var text = destination.textContent.toLowerCase();
+            var parent = destination.parentElement;
+
+            if (text.includes(searchInput)) {
+                parent.style.display = 'block';
+            } else {
+                parent.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Mappin</title>
-    <link rel="stylesheet" href="/style_sign.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_sign.css?after">
 </head>
 <body>
 <div class="container">
@@ -23,9 +23,9 @@
             <button type="submit">회원가입</button>
         </form>
         <div class="social-login">
-            <button class="google"><img src="google-icon.png" alt="Google"> Google</button>
-            <button class="naver"><img src="naver-icon.png" alt="Naver"> Naver</button>
-            <button class="kakao"><img src="kakao-icon.png" alt="Kakao"> Kakao</button>
+            <button class="google" onclick="location.href='/oauth2/authorization/google'"><img src="google-icon.png" alt="Google"> Google</button>
+            <button class="naver" onclick="location.href='/oauth2/authorization/naver'"><img src="naver-icon.png" alt="Naver"> Naver</button>
+            <button class="kakao" onclick="location.href='/oauth2/authorization/kakao'"><img src="kakao-icon.png" alt="Kakao"> Kakao</button>
         </div>
     </div>
 </div>
