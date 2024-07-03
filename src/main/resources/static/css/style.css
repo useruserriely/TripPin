@@ -9,13 +9,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 15px;
     background-color: #f8f8f8;
     border-bottom: 1px solid #e7e7e7;
 }
 
 .logo img {
-    height: 50px;
+    height: 80px; /* 이미지 높이 */
+    width: 140px; /* 너비 자동으로 조정 */
 }
 
 nav ul {
@@ -31,12 +32,24 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #666; /* 진한 회색으로 설정 */
+    padding-top: 30px; /* 글자 아래로 이동 */
+    display: block; /* 패딩 적용을 위해 블록 요소로 설정 */
+    height: 100%; /* 전체 높이를 차지하도록 설정 */
+    font-weight: bold; /* 글자 두껍게 설정 */
+}
+
+nav ul li a:hover {
+    color: #3BA683; /* 마우스를 올렸을 때 민트색으로 변경 */
 }
 
 .search {
     text-align: center;
     padding: 50px 20px;
+}
+
+.search h1 {
+    font-size: 32px; /* 글씨 크기 설정 */
 }
 
 .search-box {
@@ -46,16 +59,17 @@ nav ul li a {
 }
 
 .search-box input {
-    padding: 10px;
-    width: 300px;
+    padding: 18px;
+    width: 400px;
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px;
+    font-size: 18px;
 }
 
 .search-box button {
     padding: 10px 20px;
     border: none;
-    background-color: #007BFF;
+    background-color: #3BA683;
     color: white;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
@@ -67,24 +81,23 @@ nav ul li a {
     padding: 50px 20px;
 }
 
+.top-destinations h2 {
+    font-size: 28px; /* 글씨 크기 설정 */
+    font-weight: bold; /* 선택 사항: 글씨 두께 설정 */
+}
+
 .destination-list {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    flex-wrap: wrap; /* 필요시 줄 바꿈 설정 */
+    justify-content: space-between; /* 아이템 사이에 공간을 균등하게 배치 */
+    gap: 20px; /* 아이템 간격 */
+    padding: 0 20px; /* 좌우 여백 */
 }
 
 .destination {
-    width: 200px;
-    height: 250px;
-    background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    flex: 1 0 calc(33.333% - 40px); /* 아이템 너비 설정 */
+    max-width: calc(33.333% - 40px); /* 최대 너비 설정 */
+    margin-bottom: 20px; /* 아래 여백 추가 */
 }
 
 .destination:hover {
@@ -93,13 +106,15 @@ nav ul li a {
 
 .destination img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
+    height: 200px; /* 원하는 높이로 설정 */
+    object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞춥니다 */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .destination p {
-    padding: 10px;
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding: 10px 0;
     font-weight: bold;
 }
 
