@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelShare</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    </head>
+</head>
 <body>
 <header>
     <div class="logo">
-        <a href="index.html">
-            <img src="images/logo_clean.png" alt="TripPin Logo">
+        <a href="/">
+            <img src="images/logo/logo_clean.png" alt="TripPin Logo">
         </a>
     </div>
     <nav>
         <ul>
-            <li><a href="#">홈</a></li>
             <li><a href="#">여행지</a></li>
             <li><a href="#">커뮤니티</a></li>
             <li><a href="#">내 일정</a></li>
@@ -54,6 +53,11 @@
     <section class="domestic-destinations">
         <h2>국내 여행지</h2>
         <div class="destination-list">
+<<<<<<< HEAD
+            <div class="destination" th:each="image : ${images}">
+                <img th:src="${image.imageUrl}" th:alt="${image.alt}">
+                <p th:text="${image.alt}"></p>
+=======
             <div class="destination">
                 <img src="images/gyeongju.png" alt="Gyeongju">
                 <p>Gyeongju</p>
@@ -69,6 +73,7 @@
             <div class="destination">
                 <img src="images/seoul.png" alt="Seoul">
                 <p>Seoul</p>
+>>>>>>> 11720011fe6a8e43782d5c5866e8fc0b1be0764d
             </div>
             <div class="destination">
                 <img src="images/daejeon.png" alt="Daejeon">
