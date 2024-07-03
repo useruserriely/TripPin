@@ -1,5 +1,6 @@
 package personal.project.TripPin.security;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +26,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(
+                                PathRequest.toStaticResources().atCommonLocations(),
+                                new AntPathRequestMatcher("/resources/**")
+                        ).permitAll()
                         .requestMatchers("/", "/login", "/signup", "/findPw").permitAll() // "/" 경로 추가
                         .anyRequest().authenticated()
                 )
