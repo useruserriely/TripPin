@@ -81,6 +81,13 @@ nav ul li a:hover {
     padding: 50px 20px;
 }
 
+.top-destinations h2,
+.domestic-destinations h2 {
+    font-size: 28px; /* 글씨 크기 설정 */
+    font-weight: bold; /* 선택 사항: 글씨 두께 설정 */
+    margin-bottom: 30px; /* 제목 아래 여백 추가 */
+}
+
 .top-destinations h2 {
     font-size: 28px; /* 글씨 크기 설정 */
     font-weight: bold; /* 선택 사항: 글씨 두께 설정 */
@@ -89,14 +96,13 @@ nav ul li a:hover {
 .destination-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center; /* 중앙 정렬 */
     gap: 5px; /* 사진 간격을 더 좁힘 */
-    padding: 0 40px; /* 좌우 여백을 40px로 조정 */
+    padding: 0 100px; /* 좌우 여백을 100px로 조정 */
 }
 
 .destination {
-    flex: 1 0 calc(33.333% - 20px); /* 아이템 너비를 조정하여 여백을 줄임 */
-    max-width: calc(33.333% - 20px); /* 최대 너비 설정 */
+    width: calc(25% - 20px); /* 아이템 너비를 고정하여 한 줄에 4개 배치 */
     margin-bottom: 20px;
 }
 
@@ -105,15 +111,9 @@ nav ul li a:hover {
 }
 
 .destination img {
-<<<<<<< HEAD
-    width: 80%; /* 이미지 너비를 꽉 채우도록 설정 */
-    height: 300px; /* 원하는 높이로 설정 */
+    width: 75%; /* 이미지 너비를 꽉 채우도록 설정 */
+    height: 300px; /* 원하는 높이로 설정 (세로를 길게 설정) */
     object-fit: cover;
-=======
-    width: 100%;
-    height: 200px; /* 원하는 높이로 설정 */
-    object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞춥니다 */
->>>>>>> 11720011fe6a8e43782d5c5866e8fc0b1be0764d
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
 }
