@@ -66,25 +66,24 @@
     <p>&copy; 2024 TripPin. All rights reserved.</p>
 </footer>
 
+<!-- 모달 구조 -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modalImage" src="" alt="">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <button id="registerButton">일정 등록하기</button>
+        <div id="calendarContainer" style="display: none;">
+            <div id="calendar" class="calendar">
+                <!-- 달력이 여기에 추가될 것입니다 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- 자바스크립트 추가 -->
-<script>
-    // 검색 버튼 클릭 시 입력된 여행지 검색
-    document.getElementById('searchBtn').addEventListener('click', function() {
-        var searchInput = document.getElementById('searchInput').value.toLowerCase();
-        var destinations = document.querySelectorAll('.destination p');
-
-        destinations.forEach(function(destination) {
-            var text = destination.textContent.toLowerCase();
-            var parent = destination.parentElement;
-
-            if (text.includes(searchInput)) {
-                parent.style.display = 'block';
-            } else {
-                parent.style.display = 'none';
-            }
-        });
-    });
-</script>
-
+<script src="js/scripts_main.js"></script>
 </body>
 </html>
