@@ -33,8 +33,16 @@ public class MemberController {
             return "signup";
         }
 
+        // 회원 가입 처리
+        try {
+            memberService.save(memberForm.getLoginId(), memberForm.getPassword(), memberForm.getEmail());
+        } catch (RuntimeException e) {
+            bindingResult.rejectValue("loginId", "error.memberForm", e.getMessage());
+            return "signup"; // 예외 발생 시 다시 회원가입 폼을 보여줌
+        }
 
-        return "redirect:/";
+        // 회원가입 성공 후 로그인 페이지로 이동
+        return "redirect:/login"; // 로그인 페이지로 리다이렉트
     }
 
     @GetMapping("/login")
