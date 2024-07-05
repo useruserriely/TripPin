@@ -35,7 +35,7 @@ public class MemberController {
 
         // 회원 가입 처리
         try {
-            memberService.save(memberForm.getLoginId(), memberForm.getPassword(), memberForm.getEmail());
+            memberService.save(memberForm.getLoginId(), memberForm.getPassword(), memberForm.getEmail(), memberForm.getNickname(), memberForm.getPhone());
         } catch (RuntimeException e) {
             bindingResult.rejectValue("loginId", "error.memberForm", e.getMessage());
             return "signup"; // 예외 발생 시 다시 회원가입 폼을 보여줌

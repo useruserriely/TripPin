@@ -21,7 +21,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final ResourceLoader resourceLoader;
 
-    public Member save(String loginId, String password, String email) {
+    public Member save(String loginId, String password, String email, String nickname, String phone) {
         // 아이디 중복 체크
         if (memberRepository.findByLoginId(loginId).isPresent()) {
             throw new RuntimeException("이미 존재하는 아이디입니다.");
@@ -34,14 +34,13 @@ public class MemberService {
         String encodedPassword = passwordEncoder.encode(password);
         Member member = new Member();
         member.setLoginId(loginId);
-        member.setPassword(passwordEncoder.encode(password));
+        member.setPassword(encodedPassword);
         member.setEmail(email);
-
+        member.setNickname(nickname);
+        member.setPhone(phone);
 
         // Member 저장
-        member = memberRepository.save(member);
-
-        return member;
+        return memberRepository.save(member);
     }
 
     public Member getMember(String loginId) {
