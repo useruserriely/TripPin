@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import personal.project.TripPin.DataNotFoundException;
 import personal.project.TripPin.plan.Plan;
 import personal.project.TripPin.plan.PlanRepository;
@@ -21,6 +22,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final ResourceLoader resourceLoader;
 
+    @Transactional
     public Member save(String loginId, String password, String email, String nickname, String phone) {
         // 아이디 중복 체크
         if (memberRepository.findByLoginId(loginId).isPresent()) {

@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .formLogin(formLogin ->
                         formLogin.loginPage("/login")
                                 .defaultSuccessUrl("/", true)
+                                .usernameParameter("loginId") // 로그인 폼에서 전송되는 파라미터 이름을 loginId로 설정
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")
