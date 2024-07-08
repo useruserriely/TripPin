@@ -49,4 +49,32 @@ public class PlanController {
     public void deletePlan(@PathVariable Long id) {
         planService.deletePlan(id);
     }
+
+
+    @GetMapping("/plan/{id}/map")
+    @ResponseBody
+    public MapData getPlanMapDetails(@PathVariable Long id) {
+        Optional<Plan> optionalPlan = planService.getPlanById(id);
+        if (optionalPlan.isPresent()) {
+            Plan plan = optionalPlan.get();
+            // 여기서는 Plan 객체에서 latitude와 longitude를 가져와 MapData 객체에 담아 반환합니다.
+            MapData mapData = new MapData(plan.getLatitude(), plan.getLongitude());
+            return mapData;
+        } else {
+            throw new RuntimeException("Plan not found with id " + id);
+        }
+    }
+
+    // MapData 클래스는 Plan의 지도 정보를 담을 DTO 클래스로 가정합니다.
+    static class MapData {
+        private double latitude;
+        private double longitude;
+
+        public MapData(double latitude, double longitude) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
+
+        // Getter, Setter 생략
+    }
 }
