@@ -16,9 +16,15 @@ public class PlanController {
     @Autowired
     private PlanService planService;
 
-    @GetMapping
-    public List<Plan> getAllPlans() {
-        return planService.getAllPlans();
+    @GetMapping("/list")
+    public String viewPlanList() {
+        return "plan_list"; // HTML 페이지로 이동
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    public List<Plan> getAllPlans(@RequestParam(required = false, defaultValue = "latest") String sort) {
+        return planService.getAllPlans(sort);
     }
 
     @GetMapping("/{id}")
@@ -39,6 +45,8 @@ public class PlanController {
             plan.setLocation(planDetails.getLocation());
             plan.setStartDate(planDetails.getStartDate());
             plan.setEndDate(planDetails.getEndDate());
+            plan.setLatitude(planDetails.getLatitude()); // 추가된 필드
+            plan.setLongitude(planDetails.getLongitude()); // 추가된 필드
             return planService.savePlan(plan);
         } else {
             throw new RuntimeException("Plan not found with id " + id);
