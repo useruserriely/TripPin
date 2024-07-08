@@ -19,4 +19,7 @@ public class Plan {
     private String location;
     private Date startDate;
     private Date endDate;
+
+    private double latitude;
+    private double longitude;
 }

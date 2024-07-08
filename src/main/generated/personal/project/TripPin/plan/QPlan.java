@@ -23,7 +23,11 @@ public class QPlan extends EntityPathBase<Plan> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    public final NumberPath<Double> latitude = createNumber("latitude", Double.class);
+
     public final StringPath location = createString("location");
+
+    public final NumberPath<Double> longitude = createNumber("longitude", Double.class);
 
     public final DateTimePath<java.util.Date> startDate = createDateTime("startDate", java.util.Date.class);
 

@@ -13,23 +13,26 @@ function initMap() {
     service = new google.maps.places.PlacesService(map);
 }
 
-document.getElementById('searchBtn').addEventListener('click', () => {
-    const searchQuery = document.getElementById('placeSearch').value;
-    if (searchQuery) {
-        const request = {
-            query: searchQuery,
-            fields: ['name', 'geometry'],
-        };
-        service.findPlaceFromQuery(request, (results, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-                map.setCenter(results[0].geometry.location);
-                const marker = new google.maps.Marker({
-                    position: results[0].geometry.location,
-                    map: map,
-                });
-                infowindow.setContent(results[0].name);
-                infowindow.open(map, marker);
-            }
-        });
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBtn = document.getElementById('searchBtn');
+    searchBtn.addEventListener('click', () => {
+        const searchQuery = document.getElementById('placeSearch').value;
+        if (searchQuery) {
+            const request = {
+                query: searchQuery,
+                fields: ['name', 'geometry'],
+            };
+            service.findPlaceFromQuery(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                    map.setCenter(results[0].geometry.location);
+                    const marker = new google.maps.Marker({
+                        position: results[0].geometry.location,
+                        map: map,
+                    });
+                    infowindow.setContent(results[0].name);
+                    infowindow.open(map, marker);
+                }
+            });
+        }
+    });
 });

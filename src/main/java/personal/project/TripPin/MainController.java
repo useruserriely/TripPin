@@ -22,4 +22,5 @@ public class MainController {
 
         return "index"; // 메인 페이지 뷰 파일 (index.html)
     }
+
 }
