@@ -3,6 +3,7 @@ package personal.project.TripPin.plan;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import personal.project.TripPin.member.MemberService;
 
@@ -16,15 +17,25 @@ public class PlanController {
     @Autowired
     private PlanService planService;
 
-    @GetMapping("/list")
-    public String viewPlanList() {
-        return "plan_list"; // HTML 페이지로 이동
+    @GetMapping
+    public String viewPlan(Model model) {
+        // 필요한 데이터를 모델에 추가하고
+        List<Plan> plans = planService.getAllPlans();
+        model.addAttribute("plan", plans);
+
+        // 뷰 이름을 반환합니다.
+        return "plan"; // plan_list.html과 매핑된 경로
     }
 
-    @GetMapping("/all")
-    @ResponseBody
-    public List<Plan> getAllPlans(@RequestParam(required = false, defaultValue = "latest") String sort) {
-        return planService.getAllPlans(sort);
+
+    @GetMapping("/list")
+    public String viewPlanList(Model model) {
+        // 필요한 데이터를 모델에 추가하고
+        List<Plan> plans = planService.getAllPlans();
+        model.addAttribute("plans", plans);
+
+        // 뷰 이름을 반환합니다.
+        return "plan_list"; // plan_list.html과 매핑된 경로
     }
 
     @GetMapping("/{id}")
@@ -56,6 +67,12 @@ public class PlanController {
     @DeleteMapping("/{id}")
     public void deletePlan(@PathVariable Long id) {
         planService.deletePlan(id);
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    public List<Plan> getAllPlans(@RequestParam(required = false, defaultValue = "latest") String sort) {
+        return planService.getAllPlans(sort);
     }
 
 
