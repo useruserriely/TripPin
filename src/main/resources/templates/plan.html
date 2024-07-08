@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripPin - 일정 등록</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Leaflet CSS (지도 라이브러리) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>일정 등록 - TravelShare</title>
+    <link rel="stylesheet" href="css/style_plan.css">
 </head>
 <body>
-<!-- 왼쪽 상단 로고와 네비게이션 바 -->
 <header>
     <div class="logo">
         <a href="/">
@@ -21,57 +18,58 @@
             <li><a href="#">여행지</a></li>
             <li><a href="#">커뮤니티</a></li>
             <li><a href="#">내 일정</a></li>
-            <li><a href="/login">로그아웃</a></li>
+            <li><a href="/signup">회원가입</a></li>
+            <li><a href="/login">로그인</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- 메인 콘텐츠 -->
-<main class="register-container">
-    <!-- 왼쪽 패널 - 기간 선택 및 장소 선택 -->
-    <div class="left-panel">
-        <div class="step-indicator">
-            <div class="step active">STEP 1. 기간 선택</div>
-            <div class="step">STEP 2. 장소 선택</div>
-        </div>
-        <div class="selected-location">
-            <!-- 최초 선택한 지역명 -->
-            <h2 id="selectedLocationName">제주</h2>
-            <!-- 기간 표시 -->
-            <p id="selectedPeriod">2023-07-01 ~ 2023-07-07</p>
-            <!-- 장소 선택 및 신규 등록 -->
-            <div class="location-actions">
-                <button id="selectLocationBtn">장소 선택</button>
-                <button id="registerNewLocationBtn">신규 등록</button>
+<main>
+    <section class="schedule-registration">
+        <div class="sidebar">
+            <h1>오사카</h1>
+            <p>2024.07.16(화) - 2024.07.18(목)</p>
+            <div class="step">
+                <p>STEP 1 날짜 확인</p>
+                <p>STEP 2 장소 선택</p>
+                <p>STEP 3 숙소 설정</p>
             </div>
+            <div class="search">
+                <input type="text" id="placeSearch" placeholder="장소명을 입력해주세요">
+                <button id="searchBtn">검색</button>
+            </div>
+            <div class="recommendations">
+                <button>추천 장소</button>
+                <button>명소</button>
+                <button>식당</button>
+                <button>카페</button>
+            </div>
+            <div class="search-results">
+                <ul id="resultsList">
+                    <li>
+                        <img src="images/place1.jpg" alt="도톤보리">
+                        <div class="info">
+                            <h3>도톤보리</h3>
+                            <p>Dotombori, Chuo Ward, Osaka</p>
+                        </div>
+                        <button>+</button>
+                    </li>
+            </div>
+                    <!-- 추가 장소 목록 -->
+                </ul>
+            <button class="next-btn">다음</button>
         </div>
-    </div>
-
-    <!-- 오른쪽 패널 - 지역 및 지도 -->
-    <div class="right-panel">
-        <div id="map" class="map"></div>
-    </div>
+        <div class="map">
+            <div id="map"></div>
+        </div>
+    </section>
 </main>
 
-<!-- 모달 구조 -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <img id="modalImage" src="" alt="">
-        <h2 id="modalTitle"></h2>
-        <p id="modalDescription"></p>
-        <button class="registerButton">일정 등록하기</button>
-        <div class="calendarContainer" style="display: none;">
-            <div class="calendar" id="calendar">
-                <!-- 달력이 여기에 추가될 것입니다 -->
-            </div>
-        </div>
-    </div>
-</div>
+<footer>
+    <p>&copy; 2024 TripPin. All rights reserved.</p>
+</footer>
 
-<!-- JavaScript 및 지도 라이브러리 -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="js/scripts_plan.js"></script>
-<script src="js/register.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5pgig-wQP5p7WOhbhClOYjIoplehYFrAY&callback=initMap" async defer></script>
 </body>
 </html>

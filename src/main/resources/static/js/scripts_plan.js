@@ -1,29 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById("myModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalDescription = document.getElementById("modalDescription");
-    const span = document.getElementsByClassName("close")[0];
+let map;
+let service;
+let infowindow;
 
-    document.querySelectorAll('.destination').forEach(item => {
-        item.addEventListener('click', event => {
-            const title = item.querySelector('p').textContent;
-            const imageUrl = item.querySelector('img').src;
-            const description = item.querySelector('p').textContent;
-
-            modalImage.src = imageUrl;
-            modalDescription.textContent = description;
-
-            modal.style.display = "block";
-        });
+function initMap() {
+    const osaka = { lat: 34.6937, lng: 135.5023 };
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: osaka
     });
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+    infowindow = new google.maps.InfoWindow();
+    service = new google.maps.places.PlacesService(map);
+}
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+document.getElementById('searchBtn').addEventListener('click', () => {
+    const searchQuery = document.getElementById('placeSearch').value;
+    if (searchQuery) {
+        const request = {
+            query: searchQuery,
+            fields: ['name', 'geometry'],
+        };
+        service.findPlaceFromQuery(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                map.setCenter(results[0].geometry.location);
+                const marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map,
+                });
+                infowindow.setContent(results[0].name);
+                infowindow.open(map, marker);
+            }
+        });
     }
 });
