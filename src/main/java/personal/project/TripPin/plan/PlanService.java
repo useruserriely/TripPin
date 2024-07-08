@@ -17,6 +17,14 @@ public class PlanService {
         return planRepository.findAll();
     }
 
+    public List<Plan> getAllPlans(String sort) {
+        if ("oldest".equals(sort)) {
+            return planRepository.findAllByOrderByStartDateAsc();
+        } else {
+            return planRepository.findAllByOrderByStartDateDesc();
+        }
+    }
+
     public Optional<Plan> getPlanById(Long id) {
         return planRepository.findById(id);
     }
