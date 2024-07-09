@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>일정 등록 - TravelShare</title>
     <link rel="stylesheet" href="css/style_plan.css">
-    </head>
+</head>
 <body>
 <header>
     <div class="logo">
@@ -28,36 +28,37 @@
     <section class="schedule-registration">
         <div class="sidebar">
             <h1>오사카</h1>
-            <p>2024.07.16(화) - 2024.07.18(목)</p>
+            <p id="selected-dates">2024.07.16(화) - 2024.07.18(목)</p>
             <div class="step">
-                <p>STEP 1 날짜 확인</p>
-                <p>STEP 2 장소 선택</p>
-                <p>STEP 3 숙소 설정</p>
+                <p id="step1" class="current-step">STEP 1 날짜 확인</p>
+                <p id="step2">STEP 2 장소 선택</p>
+                <p id="step3">STEP 3 숙소 설정</p>
             </div>
-            <div class="search">
-                <input type="text" id="placeSearch" placeholder="장소명을 입력해주세요">
-                <button id="searchBtn">검색</button>
+            <div id="step1-content" class="step-content">
+                <input type="date" id="start-date">
+                <input type="date" id="end-date">
+                <button class="next-btn" onclick="nextStep(2)">다음</button>
             </div>
-            <div class="recommendations">
-                <button>추천 장소</button>
-                <button>명소</button>
-                <button>식당</button>
-                <button>카페</button>
+            <div id="step2-content" class="step-content hidden">
+                <div class="search">
+                    <input type="text" id="placeSearch" placeholder="장소명을 입력해주세요">
+                    <button id="searchBtn">검색</button>
+                </div>
+                <div class="recommendations">
+                    <button>추천 장소</button>
+                    <button>명소</button>
+                    <button>식당</button>
+                    <button>카페</button>
+                </div>
+                <div class="search-results">
+                    <ul id="resultsList"></ul>
+                </div>
+                <button class="next-btn" onclick="nextStep(3)">다음</button>
             </div>
-            <div class="search-results">
-                <ul id="resultsList">
-                    <li>
-                        <img src="images/place1.jpg" alt="도톤보리">
-                        <div class="info">
-                            <h3>도톤보리</h3>
-                            <p>Dotombori, Chuo Ward, Osaka</p>
-                        </div>
-                        <button>+</button>
-                    </li>
+            <div id="step3-content" class="step-content hidden">
+                <p>숙소 설정 페이지</p>
+                <button class="next-btn">완료</button>
             </div>
-                    <!-- 추가 장소 목록 -->
-                </ul>
-            <button class="next-btn">다음</button>
         </div>
         <div class="map">
             <div id="map"></div>
@@ -70,6 +71,6 @@
 </footer>
 
 <script defer src="js/scripts_plan.js"></script>
-<script defer src="https://maps.googleapis.com/maps/api/js?key=googlekey&callback=initMap"></script>
+<script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5pgig-wQP5p7WOhbhClOYjIoplehYFrA&callback=initMap"></script>
 </body>
 </html>

@@ -70,6 +70,15 @@ main {
     margin: 10px 0;
 }
 
+.step p.current-step {
+    font-weight: bold;
+    color: #3BA683;
+}
+
+.step-content.hidden {
+    display: none;
+}
+
 .search {
     display: flex;
     margin: 20px 0;
