@@ -33,6 +33,10 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath phone = createString("phone");
 
+    public final StringPath resetToken = createString("resetToken");
+
+    public final DateTimePath<java.time.LocalDateTime> resetTokenExpiration = createDateTime("resetTokenExpiration", java.time.LocalDateTime.class);
+
     public final DateTimePath<java.time.LocalDateTime> updateDate = createDateTime("updateDate", java.time.LocalDateTime.class);
 
     public QMember(String variable) {

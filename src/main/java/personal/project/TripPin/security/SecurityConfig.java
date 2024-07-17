@@ -30,7 +30,7 @@ public class SecurityConfig {
                                 PathRequest.toStaticResources().atCommonLocations(),
                                 new AntPathRequestMatcher("/resources/**")
                         ).permitAll()
-                        .requestMatchers("/", "/login", "/signup", "/findPw").permitAll() // "/" 경로 추가
+                        .requestMatchers("/", "/login", "/signup", "/find-id", "/reset-password").permitAll() // "/" 경로 추가
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
