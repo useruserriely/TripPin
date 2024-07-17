@@ -30,6 +30,8 @@ public class Member {
     @LastModifiedDate
     private LocalDateTime updateDate;
 
+    private String resetToken;
+    private LocalDateTime resetTokenExpiration;
 
 
 }
